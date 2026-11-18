@@ -1,9 +1,9 @@
 services:
   frontend:
-    image: udaysinghkushwaha/frontend:latest
+    image: udaysinghkushwaha/taskflow-frontend:latest
     container_name: frontend
     ports:
-      - "3000:80"
+      - "8080:80"
     depends_on:
       backend:
         condition: service_healthy
@@ -12,10 +12,10 @@ services:
     restart: unless-stopped
 
   backend:
-    image: udaysinghkushwaha/backend:latest
+    image: udaysinghkushwaha/taskflow-backend:latest
     container_name: backend
     ports:
-      - "5000:5000"
+      - "3000:5000"
     environment:
       PORT: 5000
       DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/taskflow
